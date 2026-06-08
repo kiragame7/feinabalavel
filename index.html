@@ -291,8 +291,6 @@ background-image: none !important;
 <div class="elementor-element elementor-element-10b503c e-con-full e-flex e-con e-parent" data-e-type="container" data-element_type="container" data-id="10b503c" data-settings='{"background_background":"classic"}'>
 <div class="elementor-element elementor-element-64ec4b4c elementor-widget elementor-widget-heading" data-e-type="widget" data-element_type="widget" data-id="64ec4b4c" data-widget_type="heading.default">
 <h2 class="elementor-heading-title elementor-size-default">⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE</h2> </div>
-<div class="elementor-element elementor-element-49566e64 elementor-absolute elementor-widget elementor-widget-html" data-e-type="widget" data-element_type="widget" data-id="49566e64" data-settings='{"_position":"absolute"}' data-widget_type="html.default">
-</div>
 </div>
 <div class="elementor-element elementor-element-5ac6ac6e e-flex e-con-boxed e-con e-parent" data-e-type="container" data-element_type="container" data-id="5ac6ac6e">
 <div class="e-con-inner">
@@ -1027,50 +1025,80 @@ window.addEventListener("scroll", fadeScroll);
 <div class="elementor-element elementor-element-2c7fdf2e elementor-widget elementor-widget-heading" data-e-type="widget" data-element_type="widget" data-id="2c7fdf2e" data-widget_type="heading.default">
 <h2 class="elementor-heading-title elementor-size-default">Perguntas Frequentes</h2> </div>
 <div class="elementor-element elementor-element-40d87067 elementor-widget__width-inherit elementor-widget elementor-widget-toggle" data-e-type="widget" data-element_type="widget" data-id="40d87067" data-widget_type="toggle.default">
-<div class="elementor-toggle">
+<div class="elementor-toggle" id="faq-accordion">
 <div class="elementor-toggle-item">
-<div aria-controls="elementor-tab-content-1081" aria-expanded="false" class="elementor-tab-title" data-tab="1" id="elementor-tab-title-1081" role="button">
-<a class="elementor-toggle-title" tabindex="0">Isso é um curso de teologia?</a>
+<div class="elementor-tab-title" id="elementor-tab-title-1081" role="button" style="cursor: pointer; padding: 12px; background: #f5f5f5; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px;">
+<span class="elementor-toggle-title" style="display: block; font-weight: 500;">Isso é um curso de teologia?</span>
 </div>
-<div aria-labelledby="elementor-tab-title-1081" class="elementor-tab-content elementor-clearfix" data-tab="1" id="elementor-tab-content-1081" role="region"><p>Não. O material ensina como pensar sobre a fé, não teologia acadêmica nem respostas prontas.</p></div>
-</div>
-<div class="elementor-toggle-item">
-<div aria-controls="elementor-tab-content-1082" aria-expanded="false" class="elementor-tab-title" data-tab="2" id="elementor-tab-title-1082" role="button">
-<a class="elementor-toggle-title" tabindex="0">É necessário seguir uma ordem ou calendário?</a>
-</div>
-<div aria-labelledby="elementor-tab-title-1082" class="elementor-tab-content elementor-clearfix" data-tab="2" id="elementor-tab-content-1082" role="region"><p>Sim. O material foi pensado para uma pergunta por semana, mas pode ser adaptado à rotina da família.</p></div>
+<div class="elementor-tab-content elementor-clearfix" id="elementor-tab-content-1081" role="region" style="display: none; padding: 12px; background: #fff; border: 1px solid #ddd; border-top: none; margin-bottom: 10px;"><p>Não. O material ensina como pensar sobre a fé, não teologia acadêmica nem respostas prontas.</p></div>
 </div>
 <div class="elementor-toggle-item">
-<div aria-controls="elementor-tab-content-1083" aria-expanded="false" class="elementor-tab-title" data-tab="3" id="elementor-tab-title-1083" role="button">
-<a class="elementor-toggle-title" tabindex="0">Isso substitui a igreja ou a escola bíblica?</a>
+<div class="elementor-tab-title" id="elementor-tab-title-1082" role="button" style="cursor: pointer; padding: 12px; background: #f5f5f5; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px;">
+<span class="elementor-toggle-title" style="display: block; font-weight: 500;">É necessário seguir uma ordem ou calendário?</span>
 </div>
-<div aria-labelledby="elementor-tab-title-1083" class="elementor-tab-content elementor-clearfix" data-tab="3" id="elementor-tab-content-1083" role="region"><p>Não. Ele <strong data-end="363" data-start="348">complementa</strong>, ajudando a criança a pensar melhor sobre o que aprende em outros lugares.</p></div>
-</div>
-<div class="elementor-toggle-item">
-<div aria-controls="elementor-tab-content-1084" aria-expanded="false" class="elementor-tab-title" data-tab="4" id="elementor-tab-title-1084" role="button">
-<a class="elementor-toggle-title" tabindex="0">O conteúdo é todo digital?</a>
-</div>
-<div aria-labelledby="elementor-tab-title-1084" class="elementor-tab-content elementor-clearfix" data-tab="4" id="elementor-tab-content-1084" role="region"><p>Sim. Todo o material é digital, pode ser acessado em celular, tablet, computador e também impresso, se a família preferir.</p></div>
+<div class="elementor-tab-content elementor-clearfix" id="elementor-tab-content-1082" role="region" style="display: none; padding: 12px; background: #fff; border: 1px solid #ddd; border-top: none; margin-bottom: 10px;"><p>Sim. O material foi pensado para uma pergunta por semana, mas pode ser adaptado à rotina da família.</p></div>
 </div>
 <div class="elementor-toggle-item">
-<div aria-controls="elementor-tab-content-1085" aria-expanded="false" class="elementor-tab-title" data-tab="5" id="elementor-tab-title-1085" role="button">
-<a class="elementor-toggle-title" tabindex="0">O acesso é por quanto tempo?</a>
+<div class="elementor-tab-title" id="elementor-tab-title-1083" role="button" style="cursor: pointer; padding: 12px; background: #f5f5f5; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px;">
+<span class="elementor-toggle-title" style="display: block; font-weight: 500;">Isso substitui a igreja ou a escola bíblica?</span>
 </div>
-<div aria-labelledby="elementor-tab-title-1085" class="elementor-tab-content elementor-clearfix" data-tab="5" id="elementor-tab-content-1085" role="region"><p>O acesso é vitalício. Você pode assistir às aulas quando e quantas vezes quiser.</p></div>
-</div>
-<div class="elementor-toggle-item">
-<div aria-controls="elementor-tab-content-1086" aria-expanded="false" class="elementor-tab-title" data-tab="6" id="elementor-tab-title-1086" role="button">
-<a class="elementor-toggle-title" tabindex="0">Posso acessar pelo celular?</a>
-</div>
-<div aria-labelledby="elementor-tab-title-1086" class="elementor-tab-content elementor-clearfix" data-tab="6" id="elementor-tab-content-1086" role="region"><p>Sim. O curso funciona em celular, tablet ou computador.</p></div>
+<div class="elementor-tab-content elementor-clearfix" id="elementor-tab-content-1083" role="region" style="display: none; padding: 12px; background: #fff; border: 1px solid #ddd; border-top: none; margin-bottom: 10px;"><p>Não. Ele <strong>complementa</strong>, ajudando a criança a pensar melhor sobre o que aprende em outros lugares.</p></div>
 </div>
 <div class="elementor-toggle-item">
-<div aria-controls="elementor-tab-content-1087" aria-expanded="false" class="elementor-tab-title" data-tab="7" id="elementor-tab-title-1087" role="button">
-<a class="elementor-toggle-title" tabindex="0">E se eu não gostar do curso?</a>
+<div class="elementor-tab-title" id="elementor-tab-title-1084" role="button" style="cursor: pointer; padding: 12px; background: #f5f5f5; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px;">
+<span class="elementor-toggle-title" style="display: block; font-weight: 500;">O conteúdo é todo digital?</span>
 </div>
-<div aria-labelledby="elementor-tab-title-1087" class="elementor-tab-content elementor-clearfix" data-tab="7" id="elementor-tab-content-1087" role="region"><p>Você tem 90 dias de garantia. Se não gostar, devolvemos 100% do seu dinheiro.</p></div>
+<div class="elementor-tab-content elementor-clearfix" id="elementor-tab-content-1084" role="region" style="display: none; padding: 12px; background: #fff; border: 1px solid #ddd; border-top: none; margin-bottom: 10px;"><p>Sim. Todo o material é digital, pode ser acessado em celular, tablet, computador e também impresso, se a família preferir.</p></div>
+</div>
+<div class="elementor-toggle-item">
+<div class="elementor-tab-title" id="elementor-tab-title-1085" role="button" style="cursor: pointer; padding: 12px; background: #f5f5f5; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px;">
+<span class="elementor-toggle-title" style="display: block; font-weight: 500;">O acesso é por quanto tempo?</span>
+</div>
+<div class="elementor-tab-content elementor-clearfix" id="elementor-tab-content-1085" role="region" style="display: none; padding: 12px; background: #fff; border: 1px solid #ddd; border-top: none; margin-bottom: 10px;"><p>O acesso é vitalício. Você pode assistir às aulas quando e quantas vezes quiser.</p></div>
+</div>
+<div class="elementor-toggle-item">
+<div class="elementor-tab-title" id="elementor-tab-title-1086" role="button" style="cursor: pointer; padding: 12px; background: #f5f5f5; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px;">
+<span class="elementor-toggle-title" style="display: block; font-weight: 500;">Posso acessar pelo celular?</span>
+</div>
+<div class="elementor-tab-content elementor-clearfix" id="elementor-tab-content-1086" role="region" style="display: none; padding: 12px; background: #fff; border: 1px solid #ddd; border-top: none; margin-bottom: 10px;"><p>Sim. O curso funciona em celular, tablet ou computador.</p></div>
+</div>
+<div class="elementor-toggle-item">
+<div class="elementor-tab-title" id="elementor-tab-title-1087" role="button" style="cursor: pointer; padding: 12px; background: #f5f5f5; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px;">
+<span class="elementor-toggle-title" style="display: block; font-weight: 500;">E se eu não gostar do curso?</span>
+</div>
+<div class="elementor-tab-content elementor-clearfix" id="elementor-tab-content-1087" role="region" style="display: none; padding: 12px; background: #fff; border: 1px solid #ddd; border-top: none; margin-bottom: 10px;"><p>Você tem 90 dias de garantia. Se não gostar, devolvemos 100% do seu dinheiro.</p></div>
 </div>
 </div>
+<script>
+(function() {
+  const accordion = document.getElementById('faq-accordion');
+  if (!accordion) return;
+  
+  const titles = accordion.querySelectorAll('.elementor-tab-title');
+  
+  titles.forEach(title => {
+    title.addEventListener('click', function(e) {
+      e.preventDefault();
+      const contentId = this.id.replace('title', 'content');
+      const content = document.getElementById(contentId);
+      
+      if (!content) return;
+      
+      const isOpen = content.style.display !== 'none';
+      
+      // Fechar todos os itens
+      accordion.querySelectorAll('.elementor-tab-content').forEach(item => {
+        item.style.display = 'none';
+      });
+      
+      // Abrir o clicado se estava fechado
+      if (!isOpen) {
+        content.style.display = 'block';
+      }
+    });
+  });
+})();
+</script>
 </div>
 </div>
 </div>
