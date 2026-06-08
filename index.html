@@ -15,25 +15,33 @@
 <link href="https://boasnovas.online/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fboasnovas.online%2Fpv%2F" rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"/>
 <link href="https://boasnovas.online/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fboasnovas.online%2Fpv%2F&amp;format=xml" rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"/>
 <style>
-			.lazyload,
-			.lazyloading {
-				max-width: 100%;
-			}
-			body, html {
-				margin: 0 !important;
-				padding: 0 !important;
-			}
-			.elementor-70 .elementor-element.elementor-element-10b503c {
-				margin-top: 0 !important;
-				padding-top: 0 !important;
-			}
-			.wp-site-blocks {
-				padding-top: 0 !important;
-			}
-			#wpadminbar {
-				display: none !important;
-			}
-		</style>
+				.lazyload,
+				.lazyloading {
+					max-width: 100%;
+				}
+				/* Forçar remoção de espaços no topo */
+				html, body {
+					margin: 0 !important;
+					padding: 0 !important;
+					overflow-x: hidden;
+				}
+				.elementor-70 .elementor-element.elementor-element-10b503c {
+					margin-top: 0 !important;
+					padding: 0 !important;
+					min-height: auto !important;
+				}
+				.elementor-70 .elementor-element.elementor-element-10b503c > .elementor-widget-container {
+					padding: 0 !important;
+					margin: 0 !important;
+				}
+				#wpadminbar, .admin-bar {
+					display: none !important;
+				}
+				.wp-site-blocks {
+					padding: 0 !important;
+					margin: 0 !important;
+				}
+			</style>
 <style id="wp-img-auto-sizes-contain-inline-css">
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
@@ -302,9 +310,9 @@ background-image: none !important;
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/></meta></meta></meta></head>
 <body class="home wp-singular page-template page-template-elementor_canvas page page-id-70 wp-embed-responsive wp-theme-twentytwentyfive elementor-default elementor-template-canvas elementor-kit-11 elementor-page elementor-page-70" data-rsssl="1">
 <div class="elementor elementor-70" data-elementor-id="70" data-elementor-post-type="page" data-elementor-type="wp-page">
-<div class="elementor-element elementor-element-10b503c e-con-full e-flex e-con e-parent" data-e-type="container" data-element_type="container" data-id="10b503c" data-settings='{"background_background":"classic"}'>
-<div class="elementor-element elementor-element-64ec4b4c elementor-widget elementor-widget-heading" data-e-type="widget" data-element_type="widget" data-id="64ec4b4c" data-widget_type="heading.default">
-<h2 class="elementor-heading-title elementor-size-default">⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE</h2> </div>
+<div class="elementor-element elementor-element-10b503c e-con-full e-flex e-con e-parent" data-e-type="container" data-element_type="container" data-id="10b503c" data-settings='{"background_background":"classic"}' style="background-color: #ff0000; margin: 0 !important; padding: 10px 0 !important; width: 100% !important; min-height: auto !important;">
+<div class="elementor-element elementor-element-64ec4b4c elementor-widget elementor-widget-heading" data-e-type="widget" data-element_type="widget" data-id="64ec4b4c" data-widget_type="heading.default" style="margin: 0 !important; padding: 0 !important; width: 100% !important; text-align: center !important;">
+<h2 class="elementor-heading-title elementor-size-default" style="color: #ffffff !important; margin: 0 !important; padding: 0 !important; font-size: 16px !important; font-weight: bold !important; line-height: 1.2 !important;">⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE</h2> </div>
 </div>
 <div class="elementor-element elementor-element-5ac6ac6e e-flex e-con-boxed e-con e-parent" data-e-type="container" data-element_type="container" data-id="5ac6ac6e">
 <div class="e-con-inner">
