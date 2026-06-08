@@ -494,7 +494,7 @@ mas por que acreditar.</h2> </div>
 <div class="elementor-element elementor-element-21eeb7a2 e-con-full e-flex e-con e-parent" data-e-type="container" data-element_type="container" data-id="21eeb7a2">
 <div class="elementor-element elementor-element-9a9edb2 e-con-full preco e-flex e-con e-child" data-e-type="container" data-element_type="container" data-id="9a9edb2" data-settings='{"background_background":"gradient"}'>
 <div class="elementor-element elementor-element-cc14616 elementor-widget__width-initial elementor-align-justify elementor-widget elementor-widget-button" data-e-type="widget" data-element_type="widget" data-id="cc14616" data-widget_type="button.default">
-<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+<a class="elementor-button elementor-button-link elementor-size-sm" href="javascript:void(0)" onclick="return false;">
 <span class="elementor-button-content-wrapper">
 <span class="elementor-button-text">🚨 Oferta Limitada Apenas  Hoje</span>
 </span>
@@ -1252,6 +1252,85 @@ _stq.push([ "clickTrackerInit", "254656646", "12" ]);
 /*! This file is auto-generated */
 const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
 //# sourceURL=https://boasnovas.online/wp-includes/js/wp-emoji-loader.min.js
+</script>
+<script>
+/* ── FAQ Accordion custom fix ── */
+(function () {
+  function initFaqAccordion() {
+    var toggle = document.querySelector('.elementor-toggle');
+    if (!toggle) return;
+
+    var titles = toggle.querySelectorAll('.elementor-tab-title');
+    var contents = toggle.querySelectorAll('.elementor-tab-content');
+
+    // Hide all contents initially (Elementor may have one open by default)
+    contents.forEach(function (c) {
+      c.style.display = 'none';
+      c.style.overflow = 'hidden';
+    });
+    titles.forEach(function (t) {
+      t.setAttribute('aria-expanded', 'false');
+      t.classList.remove('elementor-active');
+    });
+
+    titles.forEach(function (title) {
+      // Remove any existing Elementor click listeners by cloning
+      var fresh = title.cloneNode(true);
+      title.parentNode.replaceChild(fresh, title);
+    });
+
+    // Re-query after clone
+    var freshTitles = toggle.querySelectorAll('.elementor-tab-title');
+
+    freshTitles.forEach(function (title) {
+      title.style.cursor = 'pointer';
+
+      title.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var tabNum = this.getAttribute('data-tab');
+        var content = toggle.querySelector('.elementor-tab-content[data-tab="' + tabNum + '"]');
+        var isOpen = this.classList.contains('elementor-active');
+
+        // Close all
+        toggle.querySelectorAll('.elementor-tab-title').forEach(function (t) {
+          t.classList.remove('elementor-active');
+          t.setAttribute('aria-expanded', 'false');
+        });
+        toggle.querySelectorAll('.elementor-tab-content').forEach(function (c) {
+          c.style.display = 'none';
+        });
+
+        // If it wasn't open, open it
+        if (!isOpen) {
+          this.classList.add('elementor-active');
+          this.setAttribute('aria-expanded', 'true');
+          content.style.display = 'block';
+        }
+      });
+
+      // Also intercept the inner <a> tag clicks
+      var anchor = title.querySelector('a.elementor-toggle-title');
+      if (anchor) {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          title.click();
+        });
+      }
+    });
+  }
+
+  // Run after Elementor JS has had time to init
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(initFaqAccordion, 400);
+    });
+  } else {
+    setTimeout(initFaqAccordion, 400);
+  }
+})();
 </script>
 </body>
 </html>
