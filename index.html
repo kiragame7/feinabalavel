@@ -176,17 +176,29 @@ src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
 
   function sendCAPI(eventName, customData) {
     var eventId = getEventId();
-    // Deduplica com o pixel via event_id
+    var TEST_CODE = 'TEST30118';
+    
+    // 1. Disparo via Pixel (Navegador)
     if (typeof fbq === 'function') {
-      fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId, test_event_code: 'TEST30118' });
+      fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId, test_event_code: TEST_CODE });
     }
-    // Quando tiver o Access Token, descomentar abaixo:
-    // var fbclid = getUrlParam('fbclid');
-    // fetch('https://graph.facebook.com/v19.0/' + PIXEL_ID + '/events?access_token=SEU_ACCESS_TOKEN', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ data: [{ event_name: eventName, event_time: Math.floor(Date.now()/1000), event_id: eventId, event_source_url: window.location.href, action_source: 'website', user_data: { client_user_agent: navigator.userAgent, fbp: getCookie('_fbp'), fbc: getCookie('_fbc') || (fbclid ? 'fb.1.'+Date.now()+'.'+fbclid : null) }, custom_data: customData || {} }] })
-    // });
+
+    // 2. Disparo via API de Conversões (Servidor Vercel)
+    fetch('/api/fb-events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventName: eventName,
+        eventId: eventId,
+        eventSourceUrl: window.location.href,
+        testEventCode: TEST_CODE,
+        userData: {
+          fbp: getCookie('_fbp'),
+          fbc: getCookie('_fbc')
+        },
+        customData: customData || {}
+      })
+    }).catch(err => console.error('CAPI Error:', err));
   }
 
   // ViewContent ao carregar
