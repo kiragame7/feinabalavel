@@ -149,7 +149,8 @@ var bdthemes_magic_copy_ajax = {"post_id":"12","ajax_url":"https://boasnovas.onl
   'https://connect.facebook.net/en_US/fbevents.js');
   
   fbq('init', '982187064396690');
-  fbq('track', 'PageView', {}, {eventID: 'ev_' + Date.now(), test_event_code: 'TEST30118'});
+  fbq('track', 'PageView', {}, {eventID: 'ev_' + Date.now()});
+  console.log('%c✅ Meta Pixel: PageView disparado', 'color:green;font-weight:bold;font-size:14px');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
@@ -176,11 +177,10 @@ src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
 
   function sendCAPI(eventName, customData) {
     var eventId = getEventId();
-    var TEST_CODE = 'TEST30118';
     
     // 1. Disparo via Pixel (Navegador)
     if (typeof fbq === 'function') {
-      fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId, test_event_code: TEST_CODE });
+      fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId });
     }
 
     // 2. Disparo via API de Conversões (Servidor Vercel)
@@ -191,14 +191,18 @@ src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
         eventName: eventName,
         eventId: eventId,
         eventSourceUrl: window.location.href,
-        testEventCode: TEST_CODE,
         userData: {
           fbp: getCookie('_fbp'),
           fbc: getCookie('_fbc')
         },
         customData: customData || {}
       })
-    }).catch(err => console.error('CAPI Error:', err));
+    }).then(r => {
+      if (!r.ok) console.warn('[CAPI] Server error:', r.status);
+      return r.json();
+    }).then(data => {
+      console.log('[CAPI] Server response:', data);
+    }).catch(err => console.error('[CAPI] Fetch error:', err));
   }
 
   // ViewContent ao carregar
