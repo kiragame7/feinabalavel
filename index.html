@@ -134,20 +134,7 @@ var bdthemes_magic_copy_ajax = {"post_id":"12","ajax_url":"https://boasnovas.onl
 @font-face{font-family:Manrope;font-style:normal;font-weight:200 800;font-display:fallback;src:url('https://boasnovas.online/wp-content/themes/twentytwentyfive/assets/fonts/manrope/Manrope-VariableFont_wght.woff2') format('woff2');}
 @font-face{font-family:"Fira Code";font-style:normal;font-weight:300 700;font-display:fallback;src:url('https://boasnovas.online/wp-content/themes/twentytwentyfive/assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2') format('woff2');}
 </style>
-<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/></meta></head>
-<body class="wp-singular page-template page-template-elementor_canvas page page-id-12 wp-embed-responsive wp-theme-twentytwentyfive angie-default has-notificationx elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-12">
-<div class="elementor elementor-12" data-elementor-id="12" data-elementor-type="wp-post">
-<div class="elementor-element elementor-element-4ca2e65 e-flex e-con-boxed magic-button-disabled-no e-con e-parent" data-e-type="container" data-element_type="container" data-id="4ca2e65" style="display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;">
-</div>
-<div class="elementor-element elementor-element-416d83d e-con-full e-flex magic-button-disabled-no e-con e-parent" data-e-type="container" data-element_type="container" data-id="416d83d">
-<div class="elementor-element elementor-element-41092d6 elementor-widget elementor-widget-html" data-e-type="widget" data-element_type="widget" data-id="41092d6" data-widget_type="html.default">
-<!DOCTYPE html>
-
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8"/>
-<title>DESCOBRINDO O PORQUÊ DA FÉ - Descobrindo o Porquê da Fé</title>
-<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/></meta>
 
 <!-- ===================== META PIXEL ===================== -->
 <script>
@@ -167,46 +154,13 @@ src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
 /></noscript>
 <!-- =================== FIM META PIXEL =================== -->
 
-<!-- ============= CONVERSIONS API (CAPI) — browser-side ============= -->
+<!-- ============= CONVERSIONS API (CAPI) ============= -->
 <script>
 (function() {
   var PIXEL_ID = '982187064396690';
 
-  // Gera ou recupera um fbtrace_id único por sessão
   function getEventId() {
     return 'ev_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
-  }
-
-  // Envia evento para a CAPI via endpoint público da Meta (sem token — browser)
-  function sendCAPI(eventName, customData) {
-    var eventId = getEventId();
-    var payload = {
-      data: [{
-        event_name: eventName,
-        event_time: Math.floor(Date.now() / 1000),
-        event_id: eventId,
-        event_source_url: window.location.href,
-        action_source: 'website',
-        user_data: {
-          client_ip_address: null,
-          client_user_agent: navigator.userAgent,
-          fbp: getCookie('_fbp') || null,
-          fbc: getCookie('_fbc') || getUrlParam('fbclid') ? ('fb.1.' + Date.now() + '.' + getUrlParam('fbclid')) : null
-        },
-        custom_data: customData || {}
-      }],
-      // test_event_code: 'TEST00000' // descomente e coloque seu código de teste aqui quando for debugar
-    };
-
-    // Deduplica com o pixel via event_id
-    fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId });
-
-    // Envia via Measurement Protocol (browser) — substitua ACCESS_TOKEN quando tiver
-    // fetch('https://graph.facebook.com/v19.0/' + PIXEL_ID + '/events?access_token=SEU_ACCESS_TOKEN', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload)
-    // });
   }
 
   function getCookie(name) {
@@ -215,32 +169,40 @@ src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
   }
 
   function getUrlParam(name) {
-    var url = new URL(window.location.href);
-    return url.searchParams.get(name);
+    try { return new URL(window.location.href).searchParams.get(name); } catch(e) { return null; }
   }
 
-  // Dispara ViewContent ao carregar a página
-  window.addEventListener('DOMContentLoaded', function() {
-    sendCAPI('ViewContent', { content_name: 'Descobrindo o Porquê da Fé', content_category: 'produto' });
+  function sendCAPI(eventName, customData) {
+    var eventId = getEventId();
+    // Deduplica com o pixel via event_id
+    if (typeof fbq === 'function') {
+      fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId });
+    }
+    // Quando tiver o Access Token, descomentar abaixo:
+    // var fbclid = getUrlParam('fbclid');
+    // fetch('https://graph.facebook.com/v19.0/' + PIXEL_ID + '/events?access_token=SEU_ACCESS_TOKEN', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ data: [{ event_name: eventName, event_time: Math.floor(Date.now()/1000), event_id: eventId, event_source_url: window.location.href, action_source: 'website', user_data: { client_user_agent: navigator.userAgent, fbp: getCookie('_fbp'), fbc: getCookie('_fbc') || (fbclid ? 'fb.1.'+Date.now()+'.'+fbclid : null) }, custom_data: customData || {} }] })
+    // });
+  }
+
+  // ViewContent ao carregar
+  window.addEventListener('load', function() {
+    sendCAPI('ViewContent', { content_name: 'Descobrindo o Porquê da Fé', currency: 'BRL' });
   });
 
-  // Dispara InitiateCheckout ao clicar em qualquer botão de compra
+  // InitiateCheckout ao clicar nos botões de compra
   document.addEventListener('click', function(e) {
     var btn = e.target.closest('a[href*="perfectpay.com.br"]');
     if (btn) {
       var url = btn.getAttribute('href') || '';
       var valor = url.includes('PPU38CQCTS5') ? 67.90 : 47.90;
-      sendCAPI('InitiateCheckout', {
-        currency: 'BRL',
-        value: valor,
-        content_name: 'Descobrindo o Porquê da Fé',
-        content_category: 'produto',
-        num_items: 1
-      });
+      sendCAPI('InitiateCheckout', { currency: 'BRL', value: valor, content_name: 'Descobrindo o Porquê da Fé', num_items: 1 });
     }
   }, true);
 
-  window._sendCAPI = sendCAPI; // expõe para uso manual se precisar
+  window._sendCAPI = sendCAPI;
 })();
 </script>
 <!-- ================ FIM CAPI ================ -->
@@ -248,6 +210,19 @@ src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
 <!-- ===================== UTMIFY ===================== -->
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 <!-- ================== FIM UTMIFY ================== -->
+
+</head>
+<body class="wp-singular page-template page-template-elementor_canvas page page-id-12 wp-embed-responsive wp-theme-twentytwentyfive angie-default has-notificationx elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-12">
+<div class="elementor elementor-12" data-elementor-id="12" data-elementor-type="wp-post">
+<div class="elementor-element elementor-element-4ca2e65 e-flex e-con-boxed magic-button-disabled-no e-con e-parent" data-e-type="container" data-element_type="container" data-id="4ca2e65" style="display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;">
+</div>
+<div class="elementor-element elementor-element-416d83d e-con-full e-flex magic-button-disabled-no e-con e-parent" data-e-type="container" data-element_type="container" data-id="416d83d">
+<div class="elementor-element elementor-element-41092d6 elementor-widget elementor-widget-html" data-e-type="widget" data-element_type="widget" data-id="41092d6" data-widget_type="html.default">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<title>DESCOBRINDO O PORQUÊ DA FÉ - Descobrindo o Porquê da Fé</title>
 <meta content="index, max-snippet:-1, max-image-preview:large, max-video-preview:-1, follow" name="robots"/>
 <meta content="nositelinkssearchbox" name="google"/><link href="https://descobrindooporquedafe.com/" rel="canonical"/>
 <meta content="🔒 COMPRA 100% SEGURA E PROTEGIDA Construa Uma Fé Inabalável Nos Seus Filhos Antes Que Seja Tarde Demais A série digital criada por apologistas, teólogos e psicólogos infantis para ensinar crianças de 8 a 14 anos a PENSAR a fé — não apenas repetir histórias bíblicas. QUERO GARANTIR O ACESSO COM DESCONTO Você recebe tudo […]" name="description"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://descobrindooporquedafe.com/#","name":"","url":"https://descobrindooporquedafe.com","logo":{"@type":"ImageObject","@id":"https://descobrindooporquedafe.com/#logo","inLanguage":"pt-BR"},"description":"Descobrindo o Porqu\u00ea da F\u00e9","sameAs":["https://x.com/"]}</script><meta content="https://descobrindooporquedafe.com/" property="og:url"><meta content="Descobrindo o Porquê da Fé" property="og:site_name"><meta content="pt_BR" property="og:locale"/><meta content="website" property="og:type"/><meta content="DESCOBRINDO O PORQUÊ DA FÉ - Descobrindo o Porquê da Fé" property="og:title"/><meta content="🔒 COMPRA 100% SEGURA E PROTEGIDA Construa Uma Fé Inabalável Nos Seus Filhos Antes Que Seja Tarde Demais A série digital criada por apologistas, teólogos e psicólogos infantis para ensinar crianças de 8 a 14 anos a PENSAR a fé — não apenas repetir histórias bíblicas. QUERO GARANTIR O ACESSO COM DESCONTO Você recebe tudo […] " property="og:description"/><meta content="summary" name="twitter:card"/><meta content="pt_BR" name="twitter:locale"/><meta content="DESCOBRINDO O PORQUÊ DA FÉ - Descobrindo o Porquê da Fé" name="twitter:title"/><meta content="🔒 COMPRA 100% SEGURA E PROTEGIDA Construa Uma Fé Inabalável Nos Seus Filhos Antes Que Seja Tarde Demais A série digital criada por apologistas, teólogos e psicólogos infantis para ensinar crianças de 8 a 14 anos a PENSAR a fé — não apenas repetir histórias bíblicas. QUERO GARANTIR O ACESSO COM DESCONTO Você recebe tudo […] " name="twitter:description"/><meta content="https://descobrindooporquedafe.com/" name="twitter:url"/><title>DESCOBRINDO O PORQUÊ DA FÉ - Descobrindo o Porquê da Fé</title>
