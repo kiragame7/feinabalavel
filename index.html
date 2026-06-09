@@ -149,7 +149,7 @@ var bdthemes_magic_copy_ajax = {"post_id":"12","ajax_url":"https://boasnovas.onl
   'https://connect.facebook.net/en_US/fbevents.js');
   
   fbq('init', '982187064396690');
-  fbq('track', 'PageView');
+  fbq('track', 'PageView', {}, {eventID: 'ev_' + Date.now(), test_event_code: 'TEST30118'});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
@@ -178,7 +178,7 @@ src="https://www.facebook.com/tr?id=982187064396690&ev=PageView&noscript=1"
     var eventId = getEventId();
     // Deduplica com o pixel via event_id
     if (typeof fbq === 'function') {
-      fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId });
+      fbq('trackSingle', PIXEL_ID, eventName, customData || {}, { eventID: eventId, test_event_code: 'TEST30118' });
     }
     // Quando tiver o Access Token, descomentar abaixo:
     // var fbclid = getUrlParam('fbclid');
